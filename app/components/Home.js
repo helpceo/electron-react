@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import styles from './Home.css';
 import { Button, Switch } from 'antd';
 import http from '../plugins/axios';
-// import ROSLIB from 'roslib';
 
 const {ipcRenderer} = window.require('electron')
 
@@ -20,20 +19,20 @@ export default class Home extends Component<Props> {
     };
   }
   componentDidMount(){
-    // let ros = new ROSLIB.Ros({
-    //   url : 'ws://localhost:9090'
-    // });
-    // ros.on('connection', function() {
-    //   console.log('Connected to websocket server.');
-    // });
+    let ros = new ROSLIB.Ros({
+      url : 'ws://localhost:9090'
+    });
+    ros.on('connection', function() {
+      console.log('Connected to websocket server.');
+    });
     
-    // ros.on('error', function(error) {
-    //   console.log('Error connecting to websocket server: ', error);
-    // });
+    ros.on('error', function(error) {
+      console.log('Error connecting to websocket server: ', error);
+    });
     
-    // ros.on('close', function() {
-    //   console.log('Connection to websocket server closed.');
-    // });
+    ros.on('close', function() {
+      console.log('Connection to websocket server closed.');
+    });
     http.post('/auth/login',{
       phone: "15638900080",
       password: "123456789a",

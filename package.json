@@ -204,6 +204,7 @@
     "axios": "^0.18.0",
     "devtron": "^1.4.0",
     "electron-debug": "^1.5.0",
+    "eventemitter2": "^5.0.1",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
     "react": "^16.4.0",
