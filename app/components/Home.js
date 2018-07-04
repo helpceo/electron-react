@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Home.css';
 import { Button, Switch } from 'antd';
+import http from '../plugins/axios';
 
 const {ipcRenderer} = window.require('electron')
 
@@ -16,6 +17,15 @@ export default class Home extends Component<Props> {
       value: "不好看",
       age: 10
     };
+  }
+  componentDidMount(){
+    http.post('/auth/login',{
+      phone: "15638900080",
+      password: "123456789a",
+      type: "phone"
+    }).then(res => {
+      console.log(res.data,'1111')
+    })
   }
   handleClick = function() {
     ipcRenderer.on('asynchronous-reply', (event, arg) => {
